@@ -4,11 +4,13 @@ python:
   - "3.6"
   - "3.7-dev"
 # command to run tests
-script: python -m unittest discover
+script:
+  - coverage run --source topo setup.py test
 before_install:
   - pip install codecov
+  - pip install coverage
 after_success:
-  - bash < (curl -s https://codecov.io/bash)
+  - codecov
 branches:
   only:
     - master
