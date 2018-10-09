@@ -6,7 +6,7 @@ python:
 # command to run tests
 script: python -m unittest discover
 before_install:
-  - pip install --user codecov
+  - pip install codecov
 after_success:
   - codecov
 branches:
