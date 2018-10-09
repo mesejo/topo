@@ -1,16 +1,19 @@
-from topo import Queue, topo
+from .context import topo
 
-q = Queue([1, 2, 3], priority=False)
+import unittest
 
-assert q.pop() == 1
-assert q.pop() == 2
 
-pq = Queue([2, 3, 1, 5, 4], priority=True)
+class QueueTest(unittest.TestCase):
+    def test_no_priority(self):
+        q = topo.Queue([1, 2, 3], priority=False)
+        self.assertEqual(1, q.pop())
 
-assert pq.pop() == 1
-assert pq.pop() == 2
-assert pq.pop() == 3
+    def test_priority(self):
+        pq = topo.Queue([2, 3, 1, 5, 4], priority=True)
+        self.assertEqual(1, pq.pop())
 
-g = {1: [2], 2: []}
 
-assert [1, 2] == topo(g.keys(), g.get)
+class TopoTest(unittest.TestCase):
+    def test_queue(self):
+        g = {1: [2], 2: []}
+        self.assertEqual([1, 2], topo.topo(set(g.keys()), g.get))
