@@ -42,7 +42,7 @@ def topo(nodes: set, neighbors, key=None, reverse=False):
 
     priority = key is not None
     if not priority:
-        key = lambda x: 10
+        key = lambda x: 1
 
     seeds = (node for node, degree in in_degree.items() if degree == 0)
     queue = Queue([(key(seed), seed) for seed in seeds], priority=priority)
@@ -54,7 +54,7 @@ def topo(nodes: set, neighbors, key=None, reverse=False):
         for neighbor in neighbors(node):
             in_degree[neighbor] -= 1
             if in_degree[neighbor] == 0:
-                queue.push((key(neighbor), neighbors))
+                queue.push((key(neighbor), neighbor))
 
     if reverse:
         return list(reversed(order))
