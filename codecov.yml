@@ -1,3 +1,7 @@
+codecov:
+  archive:
+    uploads: no
+
 coverage:
   precision: 2  # Just copied from default
   round: down  # Just copied from default
