@@ -1,0 +1,18 @@
+coverage:
+  precision: 2  # Just copied from default
+  round: down  # Just copied from default
+  range: "70...100"  # Just copied from default
+
+  status:
+    project:
+      default: false  # disable the default status that measures entire project
+      core:
+        target: 92%
+        paths: "topo/*.py"
+    patch:  # Just copied from default
+      default:
+        if_no_uploads: error
+
+    changes: true  # Just copied from default
+
+comment: false
