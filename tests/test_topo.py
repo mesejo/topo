@@ -17,3 +17,7 @@ class TopoTest(unittest.TestCase):
     def test_queue(self):
         g = {1: [2], 2: []}
         self.assertEqual([1, 2], topo.topo(set(g.keys()), g.get))
+
+    def test_heap(self):
+        g = {1: [2], 2: [], 3: [2]}
+        self.assertEqual([1, 3, 2], topo.topo(set(g.keys()), g.get, key=lambda x: x))
